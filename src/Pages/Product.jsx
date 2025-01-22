@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import VendorCard from "../Components/Cards"; 
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 

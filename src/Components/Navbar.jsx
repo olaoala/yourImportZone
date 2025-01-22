@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = ({ cartCount, onCartClick, }) => {
   const [category, setCategory] = useState('')
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  console.log(category)
 
   useEffect(() => {
     const handleOutsideClick = (event) => {

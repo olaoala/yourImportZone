@@ -6,6 +6,7 @@ import VendorPage from "./Pages/Vendors";
 import image1 from "./Assets/Vendors1.jpg"
 import image2 from "./Assets/Vendors2.jpg"
 
+
 // Sample Products
 const products = [
   {
@@ -77,6 +78,8 @@ const products = [
 
 const App = () => {
   const [cart, setCart] = useState([]);
+  console.log(cart)
+
 
   const handleAddToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
