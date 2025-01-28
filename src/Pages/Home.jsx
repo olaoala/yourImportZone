@@ -30,6 +30,27 @@ const Home = ({ products }) => {
     navigate(`/product/${productId}`);
   };
 
+  const handleSendEmail = async (customerEmail, productIds) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/send-pdf", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ customerEmail, productIds }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message);
+      } else {
+        alert(data.error || "Failed to send email.");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("An error occurred while sending the email.");
+    }
+  };
 
   // Slider settings for react-slick
   const sliderSettings = {
@@ -138,6 +159,8 @@ const Home = ({ products }) => {
           cart={cart}
           onClose={() => setShowCart(false)}
           onUpdateCart={setCart}
+          onSendEmail={handleSendEmail}
+
         />
       )}
     </div>

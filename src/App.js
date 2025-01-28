@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import ProductPage from "./Pages/Product";
 import VendorPage from "./Pages/Vendors";
-import image1 from "./Assets/Vendors1.jpg"
-import image2 from "./Assets/Vendors2.jpg"
+import image1 from "./Assets/Vendors1.jpg";
+import image2 from "./Assets/Vendors2.jpg";
+// import hairpdf from "../Backend/Pdfs/Hair.pdf"
 
 
 // Sample Products
@@ -16,6 +17,7 @@ const products = [
     price: "50",
     image1: image1,
     image2: image2,
+    // pdf: hairpdf,
     description:
       "The vendor list contains vendors that sell Virgin hair, frontals, bundles, closures, HD lace and etc. Some vendors also provide packaging for those that want to start a hair business. You do not need a business license. This vendor list is an electronic file (PDF). This list has up to 12 vendors to choose from.",
     relatedProducts: [
@@ -32,6 +34,7 @@ const products = [
     price: "50",
     image1: image1,
     image2: image2,
+    // pdf: hairpdf,
     description:
       "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
     relatedProducts: [
@@ -48,6 +51,7 @@ const products = [
     price: "50",
     image1: image1,
     image2: image2,
+    // pdf: hairpdf,
     description:
       "The vendor list contains vendors that sell various types of clothing, including male, female, and kid's clothing. This list is an electronic file (PDF) with up to 12 vendors to choose from.",
     relatedProducts: [
@@ -64,6 +68,7 @@ const products = [
     price: "50",
     image1: image1,
     image2: image2,
+    // pdf: hairpdf,
     description:
       "The vendor list contains vendors specializing in lounge wear for men and women. This is an electronic file (PDF) with up to 12 vendors to choose from.",
     relatedProducts: [
@@ -78,12 +83,13 @@ const products = [
 
 const App = () => {
   const [cart, setCart] = useState([]);
-  console.log(cart)
 
 
   const handleAddToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
   };
+  console.log(cart)
+
 
   return (
     <Router>

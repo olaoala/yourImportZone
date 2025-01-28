@@ -78,7 +78,7 @@ const Navbar = ({ cartCount, onCartClick, }) => {
         {/* Logo */}
         <Link to={'/'}>
         <div className="text-center">
-          <h1 className="text-2xl font-pacific font-bold">YourImportZone</h1>
+          <h1 className="text-2xl font-nunito font-bold">YourImportZone</h1>
         </div>
         </Link>
       
