@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 const CartDetail = ({ cart, onUpdateCart, onClose, onSendEmail }) => {
   const [isEmailModalVisible, setIsEmailModalVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [paymentReference, setPaymentReference] = useState("");
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  // const [selectedProducts, setSelectedProducts] = useState([]);
+  console.log(paymentReference) 
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -25,13 +26,13 @@ const CartDetail = ({ cart, onUpdateCart, onClose, onSendEmail }) => {
     setIsEmailModalVisible(true);
   };
 
-  const handleProductSelection = (productId) => {
-    setSelectedProducts((prevSelected) =>
-      prevSelected.includes(productId)
-        ? prevSelected.filter((id) => id !== productId) // Deselect if already selected
-        : [...prevSelected, productId] // Add if not selected
-    );
-  };
+  // const handleProductSelection = (productId) => {
+  //   setSelectedProducts((prevSelected) =>
+  //     prevSelected.includes(productId)
+  //       ? prevSelected.filter((id) => id !== productId) // Deselect if already selected
+  //       : [...prevSelected, productId] // Add if not selected
+  //   );
+  // };
 
   const handleSendEmail = () => {
     if (!email) {
