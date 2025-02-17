@@ -1,28 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Slider from "react-slick"; // Import Slider from react-slick
+import Slider from "react-slick";
 import Navbar from "../Components/Navbar";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import VendorCard from "../Components/Cards";
 import CartDetail from "../Components/CartDetails";
+import { usePaystackPayment } from "react-paystack";
+import products from "../Products.json"; //
+//  Ensure products are correctly imported
 
-const Home = ({ products }) => {
+
+const Home = () => {
   const navigate = useNavigate();
-
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
+  
 
   const handleAddToCart = (product) => {
     setCart((prevCart) => {
       const isItemInCart = prevCart.find((item) => item.id === product.id);
-      if (isItemInCart) {
-        return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        return [...prevCart, { ...product, quantity: 1 }];
-      }
+      return isItemInCart
+        ? prevCart.map((item) =>
+            item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          )
+        : [...prevCart, { ...product, quantity: 1 }];
     });
   };
 
@@ -30,7 +32,10 @@ const Home = ({ products }) => {
     navigate(`/product/${productId}`);
   };
 
-  const handleSendEmail = async (customerEmail, productIds) => {
+
+
+  const handleSendEmail = async (customerEmail) => {
+    const productIds = cart.map((item) => item.id);
     try {
       const response = await fetch("http://localhost:5000/api/send-pdf", {
         method: "POST",
@@ -41,18 +46,13 @@ const Home = ({ products }) => {
       });
 
       const data = await response.json();
-      if (response.ok) {
-        alert(data.message);
-      } else {
-        alert(data.error || "Failed to send email.");
-      }
+      alert(response.ok ? data.message : data.error || "Failed to send email.");
     } catch (error) {
       console.error("Error sending email:", error);
       alert("An error occurred while sending the email.");
     }
   };
 
-  // Slider settings for react-slick
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -71,10 +71,11 @@ const Home = ({ products }) => {
       <section className="bg-gray-50 py-20 px-6">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-poppins text-gray-800">Best Sellers</h2>
-          <p className="font-nunito font-bold text-gray-400">Discover the most popular vendor lists</p>
+          <p className="font-nunito font-bold text-gray-400">
+            Discover the most popular vendor lists
+          </p>
         </div>
 
-        {/* Grid for larger screens */}
         <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
             <VendorCard
@@ -89,7 +90,6 @@ const Home = ({ products }) => {
           ))}
         </div>
 
-        {/* Carousel for small screens */}
         <div className="sm:hidden">
           <Slider {...sliderSettings}>
             {products.map((product) => (
@@ -108,10 +108,6 @@ const Home = ({ products }) => {
         </div>
       </section>
 
-      <div className="m-4">
-        <Header/>
-      </div>
-
       {/* New Arrivals Section */}
       <section className="bg-gray-50 py-10 px-6">
         <div className="text-center mb-8">
@@ -119,7 +115,6 @@ const Home = ({ products }) => {
           <p className="text-gray-600">Discover the latest vendor lists</p>
         </div>
 
-        {/* Grid for larger screens */}
         <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
             <VendorCard
@@ -134,7 +129,6 @@ const Home = ({ products }) => {
           ))}
         </div>
 
-        {/* Carousel for small screens */}
         <div className="sm:hidden">
           <Slider {...sliderSettings}>
             {products.map((product) => (
@@ -160,7 +154,6 @@ const Home = ({ products }) => {
           onClose={() => setShowCart(false)}
           onUpdateCart={setCart}
           onSendEmail={handleSendEmail}
-
         />
       )}
     </div>

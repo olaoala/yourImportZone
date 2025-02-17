@@ -44,7 +44,7 @@ const Footer = () => {
           <div>
             <h2 className="font-bold text-lg mb-4">Contact Us</h2>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Email: support@YourImportZone.com</li>
+              {/* <li>Email: support@YourImportZone.com</li> */}
             </ul>
           </div>
        
