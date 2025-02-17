@@ -6,7 +6,6 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import VendorCard from "../Components/Cards";
 import CartDetail from "../Components/CartDetails";
-import { usePaystackPayment } from "react-paystack";
 import products from "../Products.json"; //
 //  Ensure products are correctly imported
 
