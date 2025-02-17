@@ -10,6 +10,7 @@
 
 # production
 /build
+Backend/service-account.json.json
 
 # misc
 .DS_Store
