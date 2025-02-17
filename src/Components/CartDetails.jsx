@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 
 const CartDetail = ({ cart, onUpdateCart, onClose }) => {
   const [email, setEmail] = useState("");
+  const [paymentReference, setPaymentReference] = useState("");
+
+  console.log(paymentReference)
 
   useEffect(() => {
     const script = document.createElement("script");
