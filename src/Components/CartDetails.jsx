@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 const CartDetail = ({ cart, onUpdateCart, onClose }) => {
   const [email, setEmail] = useState("");
   const [paymentReference, setPaymentReference] = useState("");
+  const [reference, setReference] = useState("");
+const [customerEmail, setCustomerEmail] = useState("");
+const [productIds, setProductIds] = useState([]);
+
 
   console.log(paymentReference)
 
@@ -35,9 +39,16 @@ const CartDetail = ({ cart, onUpdateCart, onClose }) => {
       currency: "NGN",
       callback: function (response) {
         console.log("Payment Successful:", response);
-        setPaymentReference(response.reference);
+      
+        // Update states here
+        setReference(response.reference);
+        setCustomerEmail(email);
+        setProductIds(cart.map((item) => item.id));
+      
+        // Now call verifyPayment with the updated state values
         verifyPayment(response.reference, email, cart.map((item) => item.id));
       },
+      
       onClose: function () {
         alert("Transaction was not completed, window closed.");
       },
@@ -45,36 +56,29 @@ const CartDetail = ({ cart, onUpdateCart, onClose }) => {
 
     handler.openIframe();
   };
-  const backendURL = "/api/VerifyPayment"; // Netlify will proxy this to the function
-
-fetch(backendURL, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({ reference, customerEmail, productIds })
-});
+  const backendURL = "/api/verifyPayment"; // Netlify will proxy this to the function
 
 
-  // const verifyPayment = async (reference, customerEmail, productIds) => {
-  //   try {
-  //     const response = await fetch("http://localhost:5000/api/verify-payment", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ reference, customerEmail, productIds }),
-  //     });
 
-  //     const data = await response.json();
-  //     if (response.ok) {
-  //       alert("Payment verified! Check your email for the PDF.");
-  //     } else {
-  //       alert(data.error || "Payment verification failed.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error verifying payment:", error);
-  //     alert("An error occurred while verifying payment.");
-  //   }
-  // };
+  const verifyPayment = async (reference, customerEmail, productIds) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/verify-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reference, customerEmail, productIds }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Payment verified! Check your email for the PDF.");
+      } else {
+        alert(data.error || "Payment verification failed.");
+      }
+    } catch (error) {
+      console.error("Error verifying payment:", error);
+      alert("An error occurred while verifying payment.");
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
