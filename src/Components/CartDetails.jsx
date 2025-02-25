@@ -45,26 +45,36 @@ const CartDetail = ({ cart, onUpdateCart, onClose }) => {
 
     handler.openIframe();
   };
+  const backendURL = "/api/VerifyPayment"; // Netlify will proxy this to the function
 
-  const verifyPayment = async (reference, customerEmail, productIds) => {
-    try {
-      const response = await fetch("http://localhost:5000/api/verify-payment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reference, customerEmail, productIds }),
-      });
+fetch(backendURL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ reference, customerEmail, productIds })
+});
 
-      const data = await response.json();
-      if (response.ok) {
-        alert("Payment verified! Check your email for the PDF.");
-      } else {
-        alert(data.error || "Payment verification failed.");
-      }
-    } catch (error) {
-      console.error("Error verifying payment:", error);
-      alert("An error occurred while verifying payment.");
-    }
-  };
+
+  // const verifyPayment = async (reference, customerEmail, productIds) => {
+  //   try {
+  //     const response = await fetch("http://localhost:5000/api/verify-payment", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ reference, customerEmail, productIds }),
+  //     });
+
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //       alert("Payment verified! Check your email for the PDF.");
+  //     } else {
+  //       alert(data.error || "Payment verification failed.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error verifying payment:", error);
+  //     alert("An error occurred while verifying payment.");
+  //   }
+  // };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
