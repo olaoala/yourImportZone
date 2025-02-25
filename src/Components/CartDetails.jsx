@@ -9,8 +9,7 @@ const [productIds, setProductIds] = useState([]);
 const backendURL = "/api/verifyPayment"; // Netlify will proxy this to the function
 
 
-
-  console.log(paymentReference)
+  console.log(paymentReference, reference, customerEmail, productIds )
 
   useEffect(() => {
     const script = document.createElement("script");
