@@ -6,7 +6,7 @@ const CartDetail = ({ cart, onUpdateCart, onClose }) => {
   const [reference, setReference] = useState("");
 const [customerEmail, setCustomerEmail] = useState("");
 const [productIds, setProductIds] = useState([]);
-const backendURL = "/api/verifyPayment"; // Netlify will proxy this to the function
+const backendURL = "/.netlify/functions/verifyPayment"; // Netlify will proxy this to the function
 
 
   console.log(paymentReference, reference, customerEmail, productIds, setPaymentReference )
