@@ -37,7 +37,7 @@ exports.handler = async (event) => {
         text: "Thank you for your purchase! Please find the attached vendor list.",
         attachments: productIds.map((id) => ({
           filename: `${id}.pdf`,
-          path: `./src/Pdfs/${id}.pdf`, // Adjust path if needed
+          path: `${__dirname}/Pdfs/${id}.pdf`, // Adjust path if needed
         })),
       };
 

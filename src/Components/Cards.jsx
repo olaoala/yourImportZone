@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
+// import { useNavigate } from "react-router-dom";
 
-const Card = ({ name, price, image1, image2, onImageClick, onAddToCart, onWishlistToggle = () => {} }) => {
+const Card = ({ id, name, price, image1, image2, onImageClick, onAddToCart }) => {
+
   const [isHovered, setIsHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  // const navigate = useNavigate();
 
   const handleWishlistClick = () => {
     setIsLiked(!isLiked);
-    onWishlistToggle(!isLiked); // Only call if the function is provided
+    console.log(`${name} ${!isLiked ? "added to wishlist ❤️" : "removed from wishlist 💔"}`);
   };
 
   return (
@@ -16,7 +19,7 @@ const Card = ({ name, price, image1, image2, onImageClick, onAddToCart, onWishli
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Wishlist Button (Top Right) */}
+      {/* Wishlist Button */}
       <button
         onClick={handleWishlistClick}
         className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition"
@@ -24,14 +27,9 @@ const Card = ({ name, price, image1, image2, onImageClick, onAddToCart, onWishli
         <FaHeart className={`text-xl ${isLiked ? "text-red-500" : "text-gray-400"}`} />
       </button>
 
-      {/* Image */}
-      <div className="h-72 w-full cursor-pointer">
-        <img
-          src={isHovered ? image2 : image1}
-          alt={name}
-          className="object-cover w-full h-full transition-transform duration-300"
-          onClick={onImageClick}
-        />
+      {/* Image (Click to Go to Product Page) */}
+      <div className="h-72 w-full cursor-pointer" onClick={onImageClick}>
+        <img src={isHovered ? image2 : image1} alt={name} className="object-cover w-full h-full" />
       </div>
 
       {/* Product Details */}
@@ -41,11 +39,14 @@ const Card = ({ name, price, image1, image2, onImageClick, onAddToCart, onWishli
 
         {/* Add to Cart Button */}
         <button
-          onClick={onAddToCart}
-          className="mt-3 w-full bg-black text-white py-2 rounded-lg text-sm font-semibold hover:bg-gray-800 transition"
-        >
-          Add to Cart
-        </button>
+        onClick={() => {
+          console.log("🛒 Adding to cart:", name);
+          onAddToCart({ name, price, image1 });
+        }}
+        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Add to Cart
+      </button>
       </div>
     </div>
   );

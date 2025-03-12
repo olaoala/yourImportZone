@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-const CartDetail = ({ cart, onUpdateCart, onClose }) => {
+const CartDetail = ({cart, onUpdateCart, onClose }) => {
   const [email, setEmail] = useState("");
   const [paymentReference, setPaymentReference] = useState("");
   const [reference, setReference] = useState("");
 const [customerEmail, setCustomerEmail] = useState("");
 const [productIds, setProductIds] = useState([]);
-const backendURL = "/.netlify/functions/verifyPayment"; // Netlify will proxy this to the function
+const [isOpen, setIsOpen] = useState(true); // Track modal state
+
+const backendURL = "http://localhost:8888/.netlify/functions/verifyPayment"; // Netlify will proxy this to the function
 
 
-  console.log(paymentReference, reference, customerEmail, productIds, setPaymentReference )
+  console.log(cart, reference, paymentReference, customerEmail, productIds, setPaymentReference )
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -80,56 +82,64 @@ const backendURL = "/.netlify/functions/verifyPayment"; // Netlify will proxy th
   };
 
 
-
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+  
+  if (!isOpen) return null; // Don't render if modal is closed
+  
  
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white w-full md:w-2/3 lg:w-1/2 p-6 rounded-lg shadow-lg">
-        <button onClick={onClose} className="text-red-500 font-bold text-xl">
+      <div className="bg-white w-full md:w-2/3 lg:w-1/2 p-6 rounded-lg shadow-lg max-h-[80vh] overflow-y-auto">
+        <button onClick={handleClose} className="text-red-500 font-bold text-xl">
           &times;
         </button>
         <h2 className="text-2xl font-bold mb-4 text-center">Your Cart</h2>
-
+  
         {cart.length === 0 ? (
           <p className="text-gray-600">Your cart is empty!</p>
         ) : (
-          <table className="w-full text-left">
-            <thead>
-              <tr className="border-b">
-                <th className="py-2 text-gray-800 font-medium">Product</th>
-                <th className="py-2 text-gray-800 font-medium">Price</th>
-                <th className="py-2 text-gray-800 font-medium">Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((item) => (
-                <tr key={item.id} className="border-b">
-                  <td className="py-4 flex items-center gap-4">
-                    <img
-                      src={item.image1}
-                      alt={item.name}
-                      className="w-16 h-16 object-cover rounded-md"
-                    />
-                    <span className="font-medium text-gray-700">
-                      {item.name}
-                    </span>
-                  </td>
-                  <td className="py-4 text-gray-700">${item.price}</td>
-                  <td className="py-4">
-                    <span className="font-medium">{item.quantity}</span>
-                  </td>
+          // ✅ Wrap this in a scrollable div
+          <div className="max-h-[50vh] overflow-y-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b">
+                  <th className="py-2 text-gray-800 font-medium">Product</th>
+                  <th className="py-2 text-gray-800 font-medium">Price</th>
+                  <th className="py-2 text-gray-800 font-medium">Quantity</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {cart.map((item) => (
+                  <tr key={item.id} className="border-b">
+                    <td className="py-4 flex items-center gap-4">
+                      <img
+                        src={item.image1}
+                        alt={item.name}
+                        className="w-16 h-16 object-cover rounded-md"
+                      />
+                      <span className="font-medium text-gray-700">
+                        {item.name}
+                      </span>
+                    </td>
+                    <td className="py-4 text-gray-700">${item.price}</td>
+                    <td className="py-4">
+                      <span className="font-medium">{item.quantity}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
-
+  
         <div className="mt-4 flex justify-between items-center">
           <span className="font-medium text-gray-700">Subtotal:</span>
           <span className="font-bold text-lg">${totalAmount}</span>
         </div>
-
+  
         {/* Email Input & Payment Button */}
         <div className="mt-6">
           <input
@@ -149,6 +159,7 @@ const backendURL = "/.netlify/functions/verifyPayment"; // Netlify will proxy th
       </div>
     </div>
   );
+  
 };
 
 export default CartDetail;
