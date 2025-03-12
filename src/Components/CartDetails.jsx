@@ -8,7 +8,7 @@ const [customerEmail, setCustomerEmail] = useState("");
 const [productIds, setProductIds] = useState([]);
 const [isOpen, setIsOpen] = useState(true); // Track modal state
 
-const backendURL = "http://localhost:8888/.netlify/functions/verifyPayment"; // Netlify will proxy this to the function
+const backendURL = ".netlify/functions/verifyPayment"; // Netlify will proxy this to the function
 
 
   console.log(cart, reference, paymentReference, customerEmail, productIds, setPaymentReference )
