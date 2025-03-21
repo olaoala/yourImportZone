@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "./Cards";
 import { useNavigate } from "react-router-dom";
 
-const Categories = ({ products, onAddToCart }) => { // ✅ Receive onAddToCart from Home/App
+const Categories = ({ products, onAddToCart }) => {
   console.log("✅ Products in Categories:", products);
   console.log("✅ onAddToCart in Categories:", onAddToCart);
 
@@ -10,7 +10,15 @@ const Categories = ({ products, onAddToCart }) => { // ✅ Receive onAddToCart f
   const [showAll, setShowAll] = useState(false);
   const navigate = useNavigate();
 
-  const categories = [...new Set(products.map((product) => product.category))];
+  // Extract unique categories with their first product's `Catimg`
+  const categoryImages = {};
+  products.forEach((product) => {
+    if (!categoryImages[product.category]) {
+      categoryImages[product.category] = product.Catimg; // Use Catimg
+    }
+  });
+
+  const categories = Object.keys(categoryImages);
 
   const handleProductClick = (productId) => {
     navigate(`/product/${productId}`);
@@ -22,13 +30,13 @@ const Categories = ({ products, onAddToCart }) => { // ✅ Receive onAddToCart f
 
   return (
     <div className="px-6 py-10">
-       <div className="text-center mb-8">
-          <h2 className="text-3xl font-poppins text-gray-800">Categories</h2>
-          <p className="font-nunito font-bold text-gray-400">
-            Shop by Categories
-          </p>
-        </div>
-        <div className="grid grid-cols-3 gap-20 justify-center items-center mx-auto w-fit">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-poppins text-gray-800">Categories</h2>
+        <p className="font-nunito font-bold text-gray-400">Shop by Categories</p>
+      </div>
+
+      {/* Category Circles */}
+      <div className="grid grid-cols-3 gap-20 justify-center items-center mx-auto w-fit">
         {categories.map((category, index) => (
           <button
             key={index}
@@ -40,7 +48,7 @@ const Categories = ({ products, onAddToCart }) => { // ✅ Receive onAddToCart f
           >
             <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-200 rounded-full flex items-center justify-center">
               <img
-                src={`/images/${category.toLowerCase()}.jpg`}
+                src={categoryImages[category]} // Use `Catimg`
                 alt={category}
                 className="w-full h-full object-cover rounded-full"
               />
@@ -50,6 +58,7 @@ const Categories = ({ products, onAddToCart }) => { // ✅ Receive onAddToCart f
         ))}
       </div>
 
+      {/* Product List for Selected Category */}
       {selectedCategory && (
         <div className="mt-8">
           <h2 className="text-lg font-bold mb-4">{selectedCategory} Products</h2>
@@ -61,8 +70,9 @@ const Categories = ({ products, onAddToCart }) => { // ✅ Receive onAddToCart f
                 price={product.price}
                 image1={product.image1}
                 image2={product.image2}
+                description={product.description}
                 onImageClick={() => handleProductClick(product.id)}
-                onAddToCart={() => onAddToCart(product)} // ✅ Use Global Function
+                onAddToCart={() => onAddToCart(product)}
               />
             ))}
           </div>

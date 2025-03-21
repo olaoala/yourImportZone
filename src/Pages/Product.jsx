@@ -38,7 +38,9 @@ const ProductPage = ({ products, onAddToCart }) => {
       setQuantity(quantity - 1);
     }
   };
-
+  const productImages = Object.keys(product)
+  .filter((key) => key.startsWith("image")) // Select only keys that start with "image"
+  .map((key) => product[key]); // Get their values
   return (
     <div >
       <Navbar/>
@@ -52,20 +54,25 @@ const ProductPage = ({ products, onAddToCart }) => {
             className="w-full h-96 rounded-md object-cover"
           />
         </div>
-        <div className="flex justify-center gap-2 mt-2">
-          <button onClick={() => handleImageChange(product.image1)} className="w-12 h-12 border border-gray-300 rounded-md">
-            <img src={product.image1} alt={product.name} className="w-full h-full object-cover" />
-          </button>
-          <button onClick={() => handleImageChange(product.image2)} className="w-12 h-12 border border-gray-300 rounded-md">
-            <img src={product.image2} alt={product.name} className="w-full h-full object-cover" />
-          </button>
-        </div>
+        <div className="flex justify-center gap-2 mt-2 flex-wrap">
+            {productImages.map((img, index) => (
+              <button
+                key={index}
+                onClick={() => handleImageChange(img)}
+                className={`w-16 h-16 border ${
+                  currentImage === img ? "border-black" : "border-gray-300"
+                } rounded-md overflow-hidden`}
+              >
+                <img src={img} alt={`${product.name} ${index}`} className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
       </div>
 
       {/* Right Section (Product Details) */}
       <div className="w-full mt-16 md:w-1/2 md:pl-8">
         <h1 className="text-2xl font-nunito font-bold text-gray-800 mb-1">{product.name}</h1>
-        <p className="text-md font-bold  text-gray-500 mb-4">${product.price}</p>
+        <p className="text-md font-bold  text-gray-500 mb-4">₦{product.price}</p>
         <p className="font-nunito font-medium text-gray-400 mb-6">{product.description}</p>
 
         {/* Quantity and Add to Cart */}

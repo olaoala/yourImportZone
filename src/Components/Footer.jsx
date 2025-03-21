@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-black text-white py-10">
       <div className="container mx-auto px-4">
         {/* Top Section */}
-        <div className="grid grid-cols-3 md:grid-cols-4 gap-8 mb-8">
+        <div className=" gap-8 mb-8">
           {/* About Us */}
           <div>
             <h2 className="font-bold text-lg mb-4">About Us</h2>
@@ -14,40 +14,7 @@ const Footer = () => {
               scale their businesses. Your success is our priority.
             </p>
           </div>
-          {/* Quick Links */}
-          <div>
-            <h2 className="font-bold text-lg mb-4">Quick Links</h2>
-            <ul className="space-y-2">
-              <li>
-                <a href="#home" className="hover:text-gray-300">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-gray-300">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#vendors" className="hover:text-gray-300">
-                  Vendors
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-gray-300">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </div>
-          {/* Contact Us */}
-          <div>
-            <h2 className="font-bold text-lg mb-4">Contact Us</h2>
-            <ul className="space-y-2 text-sm text-gray-400">
-              {/* <li>Email: support@YourImportZone.com</li> */}
-            </ul>
-          </div>
-       
+         
         </div>
 
         {/* Bottom Section */}

@@ -44,6 +44,7 @@ const Home = ({ cart, products, onAddToCart,cartCount }) => { // ✅ Receive onA
           price={product.price}
           image1={product.image1}
           image2={product.image2}
+          description={product.description} // Add this!
           onImageClick={() => handleProductClick(product.id)}
           onAddToCart={() => onAddToCart(product)}
         />

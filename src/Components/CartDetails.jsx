@@ -124,7 +124,7 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
                         {item.name}
                       </span>
                     </td>
-                    <td className="py-4 text-gray-700">${item.price}</td>
+                    <td className="py-4 text-gray-700">₦{item.price}</td>
                     <td className="py-4">
                       <span className="font-medium">{item.quantity}</span>
                     </td>
@@ -137,7 +137,7 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
   
         <div className="mt-4 flex justify-between items-center">
           <span className="font-medium text-gray-700">Subtotal:</span>
-          <span className="font-bold text-lg">${totalAmount}</span>
+          <span className="font-bold text-lg">₦{totalAmount}</span>
         </div>
   
         {/* Email Input & Payment Button */}

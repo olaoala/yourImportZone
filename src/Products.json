@@ -1,329 +1,88 @@
 [
     {
       "id": 1,
-      "name": "Hair Vendor List",
+      "name": "Human Hair and Premium Hair Blend",
       "category": "Hair",
-      "price": "100",
+      "price": "20,000",
       "bestSeller":"yes",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell Virgin hair, frontals, bundles, closures, HD lace and etc. Some vendors also provide packaging for those that want to start a hair business. You do not need a business license. This vendor list is an electronic file (PDF). This list has up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Wig Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lace Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Raw Donor Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Bone Straight Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
+      "image1": "HB1.jpg",
+      "image2": "HB2.jpg",
+      "image3": "HB3.jpg",
+      "image4": "HB4.jpg",
+      "Catimg": "HB1.jpg",
+
+      "description": "This list contains one quality hair suppliers from Vietnam and one quality hair supplier from Indonesia.The list also includes two premium hair blend suppliers with hairs that can take heat. Price range is mildly affordable."
     },
     {
       "id": 2,
-      "name": "Lip Gloss Vendor",
-      "category": "Lip Gloss",
-      "price": "50",
-      "image1": "/Vendors2.jpg",
-      "image2": "/Vendors1.jpg",
-      "description": "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Lip Stain Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lip Gel Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Lip Gloss Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lip Liner Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
+      "name": "Copy Designers",
+      "category": "Clothes",
+      "price": "200,000",
+      "image1": "/CD1.jpg",
+      "image2": "/CD2.jpg",
+      "image3": "/CD3.jpg",
+      "image4": "/CD4.jpg",
+      "image5": "/CD5.jpg",
+      "image6": "/CD6.jpg",
+      "Catimg": "/LW1.jpg",
+
+      "description": "This list is suitable for anyone looking to start a luxury business that includes shoes, bags and clothes. The contact includes five vendors. This includes a supplier from dubai that sells high quality genuine leather Hermes bags and other designers, a supplier from Turkey that sells high quality bags and shoes also a wholesaler in Nigeria that gives the option to buy in retail, one supplier from China that sells quality clothes and sneakers made from factory and one other China supplier factory that sells quality shoes and bags with full packaging for as low as $20 with no minimum order quantity."
     },
     {
       "id": 3,
-      "name": "Cloth Vendor List",
-      "category": "Lounge Wear",
-      "price": "50",
+      "name": "Lounge and Night Wears",
+      "category": "Clothes",
+      "price": "50,000",
       "bestSeller":"yes",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell various types of clothing, including male, female, and kid's clothing. This list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Male Cloth Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Female Cloth Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Kid's Cloth Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
+      "image1": "/LW1.jpg",
+      "image2": "/LW2.jpg",
+      "image3": "/LW3.jpg",
+      "image4": "/LW4.jpg",
+      "image5": "/LW5.jpg",
+      "image6": "/LW6.jpg",
+      "Catimg": "/LW1.jpg",
+
+      "description": "This list contains three suppliers contacts. One from China and one from Turkey that sells high quality sleep wear and under wears and also a Chinese website for all things lingeries with an easy interface for users."
     },
     {
       "id": 4,
-      "name": "Lounge Wear Vendor List",
-      "category": "Lounge Wear",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors specializing in lounge wear for men and women. This is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Casual Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Silk Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Cotton Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Matching Sets Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
+      "name": "Highstreet Brands",
+      "category": "Clothes",
+      "price": "30,000",
+      "image1": "/HS1.jpg",
+      "image2": "/HS2.jpg",
+      "image3": "/HS3.jpg",
+      "image4": "/HS4.jpg",
+      "Catimg": "/LW1.jpg",
+      "description": "This list contains 4 suppliers that includes two uk suppliers for highayrewt brands like ohpolly, plt, boohoo for various item pieces including shoes, also includes one European contact suitable for boutique owners as they carry various brands in palettes. Also includes Chinese supplier for shein and Patpat bale"
     },
     {
       "id": 5,
-      "name": "Hair Vendor List",
-      "category": "Hair",
-      "price": "100",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell Virgin hair, frontals, bundles, closures, HD lace and etc. Some vendors also provide packaging for those that want to start a hair business. You do not need a business license. This vendor list is an electronic file (PDF). This list has up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Wig Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lace Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Raw Donor Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Bone Straight Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
+      "name": "Perfumes",
+      "category": "Scents",
+      "price": "50,000",
+      "image1": "/P1.jpg",
+      "image2": "/P2.jpg",
+      "image3": "/P3.jpg",
+      "image4": "/P4.jpg",
+      "image5": "/P5.jpg",
+      "image6": "/P6.jpg",
+      "image7": "/P7.jpg",
+      "Catimg": "/P1.jpg",
+      "description": "This list contains eight suppliers for different types of perfumes. It includes suppliers that sells original perfumes from dubai including testers, suppliers that sell unboxed and mini perfumes in Nigeria, suppliers for quality copy designer perfumes also."
     },
     {
       "id": 6,
-      "name": "Hair Vendor List",
+      "name": "Luxury Hair",
       "category": "Hair",
-      "price": "100",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell Virgin hair, frontals, bundles, closures, HD lace and etc. Some vendors also provide packaging for those that want to start a hair business. You do not need a business license. This vendor list is an electronic file (PDF). This list has up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Wig Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lace Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Raw Donor Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Bone Straight Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    }, 
-    {
-      "id": 7,
-      "name": "Hair Vendor List",
-      "category": "Hair",
-      "price": "100",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell Virgin hair, frontals, bundles, closures, HD lace and etc. Some vendors also provide packaging for those that want to start a hair business. You do not need a business license. This vendor list is an electronic file (PDF). This list has up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Wig Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lace Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Raw Donor Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Bone Straight Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    }, 
-    {
-      "id": 8,
-      "name": "Hair Vendor List",
-      "category": "Hair",
-      "price": "100",
-      "bestSeller":"yes",
-      "image1": "/Vendors2.jpg",
-      "image2": "/Vendors1.jpg",
-      "description": "The vendor list contains vendors that sell Virgin hair, frontals, bundles, closures, HD lace and etc. Some vendors also provide packaging for those that want to start a hair business. You do not need a business license. This vendor list is an electronic file (PDF). This list has up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Wig Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lace Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Raw Donor Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Bone Straight Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Hair Vendor List",
-      "category": "Hair",
-      "price": "100",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell Virgin hair, frontals, bundles, closures, HD lace and etc. Some vendors also provide packaging for those that want to start a hair business. You do not need a business license. This vendor list is an electronic file (PDF). This list has up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Wig Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lace Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Raw Donor Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Bone Straight Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },
-    {
-      "id": 10,
-      "name": "Lounge Wear Vendor List",
-      "category": "Lounge Wear",
-      "price": "50",
-      "bestSeller":"yes",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors specializing in lounge wear for men and women. This is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Casual Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Silk Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Cotton Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Matching Sets Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    }, {
-      "id": 11,
-      "name": "Lounge Wear Vendor List",
-      "category": "Lounge Wear",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors specializing in lounge wear for men and women. This is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Casual Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Silk Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Cotton Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Matching Sets Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    }, {
-      "id": 12,
-      "name": "Lounge Wear Vendor List",
-      "category": "Lounge Wear",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors specializing in lounge wear for men and women. This is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Casual Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Silk Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Cotton Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Matching Sets Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    }, {
-      "id": 13,
-      "name": "Lounge Wear Vendor List",
-      "category": "Lounge Wear",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors specializing in lounge wear for men and women. This is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Casual Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Silk Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Cotton Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Matching Sets Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    }, {
-      "id": 14,
-      "name": "Lounge Wear Vendor List",
-      "category": "Lounge Wear",
-      "price": "50",
-      "bestSeller":"yes",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors specializing in lounge wear for men and women. This is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Casual Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Silk Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Cotton Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Matching Sets Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    } ,{
-      "id": 15,
-      "name": "Lounge Wear Vendor List",
-      "category": "Lounge Wear",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors specializing in lounge wear for men and women. This is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Casual Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Silk Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Cotton Lounge Wear Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Matching Sets Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },
-    {
-      "id": 16,
-      "name": "Lip Gloss Vendor",
-      "category": "Lip Gloss",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Lip Stain Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lip Gel Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Lip Gloss Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lip Liner Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },{
-      "id": 17,
-      "name": "Lip Gloss Vendor",
-      "category": "Lip Gloss",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Lip Stain Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lip Gel Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Lip Gloss Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lip Liner Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },{
-      "id": 18,
-      "name": "Lip Gloss Vendor",
-      "category": "Lip Gloss",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Lip Stain Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lip Gel Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Lip Gloss Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lip Liner Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },{
-      "id": 19,
-      "name": "Lip Gloss Vendor",
-      "category": "Lip Gloss",
-      "price": "50",
-      "bestSeller":"yes",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Lip Stain Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lip Gel Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Lip Gloss Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lip Liner Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },{
-      "id": 20,
-      "name": "Lip Gloss Vendor",
-      "category": "Lip Gloss",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Lip Stain Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lip Gel Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Lip Gloss Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lip Liner Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },{
-      "id": 21,
-      "name": "Lip Gloss Vendor",
-      "category": "Lip Gloss",
-      "price": "50",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Lip Stain Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lip Gel Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Lip Gloss Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lip Liner Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
-    },{
-      "id": 22,
-      "name": "Lip Gloss Vendor",
-      "category": "Lip Gloss",
-      "price": "50",
-      "bestSeller":"yes",
-      "image1": "/Vendors1.jpg",
-      "image2": "/Vendors2.jpg",
-      "description": "The vendor list contains vendors that sell lip gloss products such as lip stains, lip gels, and more. This vendor list is an electronic file (PDF) with up to 12 vendors to choose from.",
-      "relatedProducts": [
-        { "id": 1, "name": "Lip Stain Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 2, "name": "Lip Gel Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 3, "name": "Lip Gloss Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" },
-        { "id": 4, "name": "Lip Liner Vendor", "price": "30", "image1": "/Vendors1.jpg", "image2": "/Vendors2.jpg" }
-      ]
+      "price": "500,000",
+      "image1": "/LH1.jpg",
+      "image2": "/LH2.jpg",
+      "image3": "/LH3.jpg",
+      "image4": "/LH4.jpg",
+      "Catimg": "/LH1.jpg",
+
+      "description": "This list contains five suppliers that carry exclusive luxury hair like single donor or baby hair, raw Indian hair and raw Cambodian hair with extremely great quality."
     }
   ]
   

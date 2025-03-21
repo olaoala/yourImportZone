@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";
 
-const Card = ({ id, name, price, image1, image2, onImageClick, onAddToCart }) => {
+const Card = ({ id, name, price, image1, image2,description, onImageClick, onAddToCart }) => {
 
   const [isHovered, setIsHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -35,7 +35,12 @@ const Card = ({ id, name, price, image1, image2, onImageClick, onAddToCart }) =>
       {/* Product Details */}
       <div className="text-left mt-3 px-2">
         <h3 className="font-bold text-gray-800 text-lg">{name}</h3>
-        <p className="text-gray-600 text-sm">${price}</p>
+        <p className="text-gray-400 text-md font-bold">₦{price}</p>
+
+          {/* Short Description (Limit to 2 lines) */}
+          <p className="text-gray-300 text-sm line-clamp-2 mt-1">{description}</p>
+
+
 
         {/* Add to Cart Button */}
         <button
@@ -43,7 +48,7 @@ const Card = ({ id, name, price, image1, image2, onImageClick, onAddToCart }) =>
           console.log("🛒 Adding to cart:", name);
           onAddToCart({ name, price, image1 });
         }}
-        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="my-4 px-10 py-2 bg-black text-white rounded-md"
       >
         Add to Cart
       </button>
