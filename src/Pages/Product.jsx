@@ -43,7 +43,6 @@ const ProductPage = ({ products, onAddToCart }) => {
   .map((key) => product[key]); // Get their values
   return (
     <div >
-      <Navbar/>
       <div className="flex mt-10 flex-col md:flex-row p-16 bg-gray-50">
             {/* Left Section (Image Carousel) */}
       <div className="w-full md:w-1/2 mb-6 md:mb-0">

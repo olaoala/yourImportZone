@@ -5,11 +5,11 @@
       "category": "Hair",
       "price": "20,000",
       "bestSeller":"yes",
-      "image1": "HB1.jpg",
-      "image2": "HB2.jpg",
-      "image3": "HB3.jpg",
-      "image4": "HB4.jpg",
-      "Catimg": "HB1.jpg",
+      "image1": "/HB1.jpg",
+      "image2": "/HB2.jpg",
+      "image3": "/HB3.jpg",
+      "image4": "/HB4.jpg",
+      "Catimg": "/HB1.jpg",
 
       "description": "This list contains one quality hair suppliers from Vietnam and one quality hair supplier from Indonesia.The list also includes two premium hair blend suppliers with hairs that can take heat. Price range is mildly affordable."
     },
