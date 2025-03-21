@@ -3,7 +3,24 @@ const nodemailer = require("nodemailer");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+    return { 
+      statusCode: 405, 
+      headers: { "Access-Control-Allow-Origin": "*" }, // ✅ Allow all origins
+      body: "Method Not Allowed" 
+    };
+  }
+
+  // ✅ Handle CORS preflight request
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*", // ✅ Allow all origins
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: "CORS preflight successful",
+    };
   }
 
   const { reference, customerEmail, productIds } = JSON.parse(event.body);
@@ -45,11 +62,13 @@ exports.handler = async (event) => {
 
       return {
         statusCode: 200,
+        headers: { "Access-Control-Allow-Origin": "*" }, // ✅ Allow all origins
         body: JSON.stringify({ message: "Payment verified! Email sent." }),
       };
     } else {
       return {
         statusCode: 400,
+        headers: { "Access-Control-Allow-Origin": "*" }, // ✅ Allow all origins
         body: JSON.stringify({ error: "Payment verification failed." }),
       };
     }
@@ -57,6 +76,7 @@ exports.handler = async (event) => {
     console.error("Error:", error.message);
     return {
       statusCode: 500,
+      headers: { "Access-Control-Allow-Origin": "*" }, // ✅ Allow all origins
       body: JSON.stringify({ error: "An error occurred while processing payment." }),
     };
   }

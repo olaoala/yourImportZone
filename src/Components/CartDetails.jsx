@@ -24,10 +24,15 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
     };
   }, []);
 
-  const totalAmount = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const totalAmount = cart.reduce((total, item) => {
+    const price = Number(item.price.toString().replace(/,/g, "")); // Remove commas and convert to number
+    const quantity = Number(item.quantity) || 1;
+    
+    console.log("Item Price:", item.price, "Processed Price:", price, "Quantity:", quantity); // Debugging
+  
+    return total + (price * quantity);
+  }, 0);
+  
   const verifyPayment = async (reference, customerEmail, productIds) => {
     try {
       const response = await fetch(backendURL, {
