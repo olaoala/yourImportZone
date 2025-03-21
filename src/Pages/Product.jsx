@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
 const ProductPage = ({ products, onAddToCart }) => {
@@ -73,7 +72,10 @@ const ProductPage = ({ products, onAddToCart }) => {
         <h1 className="text-2xl font-nunito font-bold text-gray-800 mb-1">{product.name}</h1>
         <p className="text-md font-bold  text-gray-500 mb-4">₦{product.price}</p>
         <p className="font-nunito font-medium text-gray-400 mb-6">{product.description}</p>
-
+        <p className="font-nunito text-sm text-gray-400 mb-2"> <b>No Refunds:</b>  Due to the nature of digital products & the ability to instantly access and download them, we do not offer refunds once the purchase is made. All sales are final.</p>
+          <p className="font-nunito text-sm text-gray-400 mb-2">Our list is designed to meet diverse needs, providing you with the best options at your fingertips, whether for professional or personal endeavors. </p>
+          <p className="font-nunito text-sm text-gray-400 mb-4">Ready to Get Started?
+          For any questions or further information, contact us on Instagram <b>@Yourimportzone</b> </p>
         {/* Quantity and Add to Cart */}
         <div className="flex items-center space-x-4 mb-6">
           <button onClick={decrementQuantity} className="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-full">
