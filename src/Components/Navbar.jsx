@@ -1,23 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CartDetail from "./CartDetails"; // ✅ Import CartDetail
 
 const Navbar = ({ cart, cartCount }) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); // ✅ Manage Cart Open state
 
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (!event.target.closest("#vendor-dropdown")) {
-        setDropdownOpen(false);
-      }
-    };
 
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
 
   return (
     <>
