@@ -7,7 +7,6 @@ const ProductPage = ({ products, onAddToCart }) => {
   const { id } = useParams(); // Get the product ID from the URL
   const [product, setProduct] = useState(null); // Start with null until product is found
   const [currentImage, setCurrentImage] = useState(null); // Default to null or empty string
-  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     if (products && products.length > 0) {
@@ -28,15 +27,8 @@ const ProductPage = ({ products, onAddToCart }) => {
     setCurrentImage(image);
   };
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
-  };
 
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
+
   const productImages = Object.keys(product)
   .filter((key) => key.startsWith("image")) // Select only keys that start with "image"
   .map((key) => product[key]); // Get their values
@@ -77,18 +69,12 @@ const ProductPage = ({ products, onAddToCart }) => {
           <p className="font-nunito text-sm text-gray-400 mb-4">Ready to Get Started?
           For any questions or further information, contact us on Instagram <b>@Yourimportzone</b> </p>
         {/* Quantity and Add to Cart */}
-        <div className="flex items-center space-x-4 mb-6">
-          <button onClick={decrementQuantity} className="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-full">
-            -
-          </button>
-          <span className="text-xl">{quantity}</span>
-          <button onClick={incrementQuantity} className="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-full">
-            +
-          </button>
+        <div className="flex items-center mb-6">
+        
           
           <button
             onClick={() => onAddToCart({ ...product })}
-            className="ml-4 px-10 py-2 bg-black text-white rounded-md"
+            className=" px-10 py-2 bg-black text-white rounded-md"
           >
             Add to Cart
           </button>

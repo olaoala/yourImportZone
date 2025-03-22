@@ -39,10 +39,10 @@ const VendorPage = ({ products, cartCount, onCartClick }) => {
                   className="h-48 w-full object-cover rounded-md mb-4"
                 />
                 <h2 className="text-lg font-bold mb-2">{vendor.name}</h2>
-                <p className="text-gray-700 mb-4">{vendor.description}</p>
-                <p className="text-gray-900 font-semibold mb-4">${vendor.price}</p>
+                <p className="text-gray-300 text-sm line-clamp-2 mt-1">{vendor.description}</p>
+                <p className="text-gray-900 font-semibold mb-4">₦{vendor.price}</p>
                 <Link to={`/product/${vendor.id}`}>
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                  <button className="my-4 px-10 py-2 bg-black text-white rounded-md">
                     View Details
                   </button>
                 </Link>
