@@ -42,6 +42,7 @@ const Home = ({ cart, products, onAddToCart,cartCount }) => { // ✅ Receive onA
           key={product.id}
           name={product.name}
           price={product.price}
+          amount= {product.amount}
           image1={product.image1}
           image2={product.image2}
           description={product.description} // Add this!

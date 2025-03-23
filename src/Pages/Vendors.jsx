@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
+import VendorCard from "../Components/Cards"; // Import the VendorCard component
 
-const VendorPage = ({ products, cartCount, onCartClick }) => {
+const VendorPage = ({ products, cartCount, onCartClick, onAddToCart }) => {
   const { category: routeCategory } = useParams();
   const [category] = useState(routeCategory || "All Vendors");
 
+  // Filter products based on the selected category
   const filteredProducts = products.filter((product) =>
     category === "All Vendors" ? true : product.category === category
   );
@@ -31,22 +33,18 @@ const VendorPage = ({ products, cartCount, onCartClick }) => {
       <div className="px-6 pb-10 mt-4">
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((vendor) => (
-              <div key={vendor.id} className="bg-white shadow-md rounded-lg p-4">
-                <img
-                  src={vendor.image1}
-                  alt={vendor.name}
-                  className="h-48 w-full object-cover rounded-md mb-4"
-                />
-                <h2 className="text-lg font-bold mb-2">{vendor.name}</h2>
-                <p className="text-gray-300 text-sm line-clamp-2 mt-1">{vendor.description}</p>
-                <p className="text-gray-900 font-semibold mb-4">₦{vendor.price}</p>
-                <Link to={`/product/${vendor.id}`}>
-                  <button className="my-4 px-10 py-2 bg-black text-white rounded-md">
-                    View Details
-                  </button>
-                </Link>
-              </div>
+            {filteredProducts.map((product) => (
+              <VendorCard
+                key={product.id}
+                name={product.name}
+                price={product.price}
+                amount={product.amount}
+                image1={product.image1}
+                image2={product.image2}
+                description={product.description} // Add this!
+                onImageClick={() => console.log(`Product Clicked: ${product.id}`)}
+                onAddToCart={() => onAddToCart(product)}
+              />
             ))}
           </div>
         ) : (

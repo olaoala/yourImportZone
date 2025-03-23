@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";
 
-const Card = ({ id, name, price, image1, image2,description, onImageClick, onAddToCart }) => {
+const Card = ({ id, name, price, amount, image1, image2,description, onImageClick, onAddToCart }) => {
 
   const [isHovered, setIsHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   // const navigate = useNavigate();
+  const discountedPrice = (amount * 0.5).toLocaleString("en-NG", {
+  });
 
   const handleWishlistClick = () => {
     setIsLiked(!isLiked);
@@ -35,7 +37,9 @@ const Card = ({ id, name, price, image1, image2,description, onImageClick, onAdd
       {/* Product Details */}
       <div className="text-left mt-3 px-2">
         <h3 className="font-bold text-gray-800 text-lg">{name}</h3>
-        <p className="text-gray-400 text-md font-bold">₦{price}</p>
+        <span className="text-red-500 font-bold text-lg">₦{discountedPrice}</span>
+
+        <p className="text-gray-400  line-through text-md font-bold">₦{price}</p>
 
           {/* Short Description (Limit to 2 lines) */}
           <p className="text-gray-300 text-sm line-clamp-2 mt-1">{description}</p>
