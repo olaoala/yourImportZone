@@ -2,9 +2,7 @@ const axios = require("axios");
 const nodemailer = require("nodemailer");
 const path = require("path");
 const fs = require("fs");
-const products = require("../../src/Products.json"); 
-
-
+const products = require("../../src/Products.json");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -15,7 +13,6 @@ exports.handler = async (event) => {
     };
   }
 
-  // ✅ Handle CORS preflight request
   if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
@@ -55,34 +52,46 @@ exports.handler = async (event) => {
       console.log("Email User:", process.env.EMAIL_USER);
       console.log("Email Password:", process.env.APP_PASSWORD ? "Loaded" : "Missing");
       
+      // ✅ Ensure `productIds` is an array
+      const productIdArray = Array.isArray(productIds) ? productIds : [productIds];
+
       // ✅ Construct attachments correctly
-      const attachments = productIds.map((id) => {
+      const attachments = productIdArray.map((id) => {
         const product = products.find((p) => p.id === id);
         if (!product) {
-          console.error("Product not found for ID:", id);
-          return null; // Skip invalid products
-        }
-
-        const pdfPath = path.join(process.cwd(), "Pdfs", `${id}.pdf`);
-        if (!fs.existsSync(pdfPath)) {
-          console.error("PDF not found at:", pdfPath);
+          console.error("❌ Product not found for ID:", id);
           return null;
         }
 
-        console.log(`Attaching PDF for product: ${product.name}, Path: ${pdfPath}`);
+        // ✅ Update the PDF path to the new location
+        const pdfPath = path.join(__dirname, "Pdfs", `${id}.pdf`);
+        if (!fs.existsSync(pdfPath)) {
+          console.error("🚨 PDF not found at:", pdfPath);
+          return null;
+        }
+
+        console.log(`✅ Attaching PDF for product: ${product.name}, Path: ${pdfPath}`);
 
         return {
           filename: path.basename(pdfPath),
-          path: pdfPath, // ✅ Read directly from the server
+          path: pdfPath,
         };
-      }).filter(Boolean); // Remove null values
+      }).filter(Boolean);
+
+      if (attachments.length === 0) {
+        return {
+          statusCode: 400,
+          headers: { "Access-Control-Allow-Origin": "*" }, 
+          body: JSON.stringify({ error: "No valid PDFs found to send." }),
+        };
+      }
 
       const mailOptions = {
         from: process.env.EMAIL_USER,
         to: customerEmail,
         subject: "Your Purchased Vendor List",
         text: "Thank you for your purchase! Please find the attached vendor list.",
-        attachments, // ✅ Attachments added here
+        attachments, 
       };
 
       await transporter.sendMail(mailOptions);
