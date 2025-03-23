@@ -5,6 +5,7 @@ const fs = require("fs");
 const products = require("../../src/Products.json"); 
 
 
+
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { 
@@ -62,7 +63,7 @@ exports.handler = async (event) => {
           return null; // Skip invalid products
         }
 
-const pdfPath = path.join(process.cwd(), "public", "Pdfs", `${productIds}.pdf`);
+        const pdfPath = path.join(process.cwd(), "public", "Pdfs", `${id}.pdf`);
         if (!fs.existsSync(pdfPath)) {
           console.error("PDF not found at:", pdfPath);
           return null;
