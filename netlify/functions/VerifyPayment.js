@@ -62,7 +62,7 @@ exports.handler = async (event) => {
           return null; // Skip invalid products
         }
 
-        const pdfPath = path.join(process.cwd(), "public", "Pdfs", `${productId}.pdf`);
+const pdfPath = path.join(process.cwd(), "public", "Pdfs", `${productIds}.pdf`);
         if (!fs.existsSync(pdfPath)) {
           console.error("PDF not found at:", pdfPath);
           return null;
