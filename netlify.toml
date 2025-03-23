@@ -1,4 +1,5 @@
 [build]
+  command = "npm run build"  # Works on Windows
   functions = "netlify/functions"
   publish = "build"
 
@@ -6,3 +7,5 @@
   command = "npm start" # or "yarn start" if using yarn
   targetPort = 3000  # Your frontend is running here
   port = 8888  # Netlify Dev functions will run on this port
+  functions = "netlify/functions"  # Add this line!
+

@@ -1,5 +1,9 @@
 const axios = require("axios");
 const nodemailer = require("nodemailer");
+const path = require("path");
+const products = require("../../src/Products.json"); // ✅ Adjust path if necessary
+
+
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -43,20 +47,42 @@ exports.handler = async (event) => {
         service: "gmail",
         auth: {
           user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_APP_PASSWORD,
+          pass: process.env.APP_PASSWORD,
         },
       });
+      console.log("Email User:", process.env.EMAIL_USER);
+      console.log("Email Password:", process.env.APP_PASSWORD ? "Loaded" : "Missing");
+      
+      const filePaths = productIds.map((id) => path.join(__dirname, "..", "Pdfs", `${id}.pdf`));
+console.log("Generated PDF Paths:", filePaths);
 
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: customerEmail,
-        subject: "Your Purchased Vendor List",
-        text: "Thank you for your purchase! Please find the attached vendor list.",
-        attachments: productIds.map((id) => ({
-          filename: `${id}.pdf`,
-          path: `${__dirname}/Pdfs/${id}.pdf`, // Adjust path if needed
-        })),
-      };
+const siteUrl = "https://yourimportzone.netlify.app/"; // Replace with your actual Netlify URL
+
+const attachments = productIds.map((id) => {
+  const product = products.find((p) => p.id === id);
+  if (!product) {
+    console.error("Product not found for ID:", id);
+    return null; // Skip invalid products
+  }
+
+  const pdfUrl = `${siteUrl}${product.pdfUrl}`; // ✅ Create the full PDF URL
+  console.log(`Attaching PDF for product: ${product.name}, URL: ${pdfUrl}`);
+
+  return {
+    filename: product.pdfUrl.split("/").pop(), // Extracts filename
+    path: pdfUrl, // ✅ Attach as URL
+  };
+}).filter(Boolean); // Remove null values
+
+const mailOptions = {
+  from: process.env.EMAIL_USER,
+  to: customerEmail,
+  subject: "Your Purchased Vendor List",
+  text: "Thank you for your purchase! Please find the attached vendor list.",
+  attachments, // ✅ Attachments added here
+};
+
+
 
       await transporter.sendMail(mailOptions);
 
