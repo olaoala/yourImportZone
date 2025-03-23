@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import PaymentStatusModal from "./PaymentStatusModal";
+
 
 const CartDetail = ({cart, onUpdateCart, onClose }) => {
   const [email, setEmail] = useState("");
@@ -7,6 +9,7 @@ const CartDetail = ({cart, onUpdateCart, onClose }) => {
 const [customerEmail, setCustomerEmail] = useState("");
 const [productIds, setProductIds] = useState([]);
 const [isOpen, setIsOpen] = useState(true); // Track modal state
+
 
 const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verifyPayment"; // Netlify will proxy this to the function
 
@@ -162,6 +165,9 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
           </button>
         </div>
       </div>
+
+      <PaymentStatusModal isOpen={modalOpen} status={modalStatus} onClose={() => setModalOpen(false)} />
+
     </div>
   );
   
