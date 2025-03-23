@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const nodemailer = require("nodemailer");
-const products = require("./products.json"); // Load product data
+const products = require("../../src/Products.json"); // Load product data
 
 exports.handler = async (event) => {
   try {
