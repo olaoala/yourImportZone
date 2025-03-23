@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
-import PaymentStatusModal from "../Components/PaymentStatus";
 
-const CartDetail = ({ cart, onClose, onUpdateCart }) => {
+const CartDetail = ({cart, onUpdateCart, onClose }) => {
   const [email, setEmail] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalStatus, setModalStatus] = useState(""); // "verifying" | "sent"
-  const [isOpen, setIsOpen] = useState(true); // Controls cart modal visibility
+  const [paymentReference, setPaymentReference] = useState("");
+  const [reference, setReference] = useState("");
+const [customerEmail, setCustomerEmail] = useState("");
+const [productIds, setProductIds] = useState([]);
+const [isOpen, setIsOpen] = useState(true); // Track modal state
 
-  const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verifyPayment";
+const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verifyPayment"; // Netlify will proxy this to the function
+
+
+  console.log(cart, reference, paymentReference, customerEmail, productIds, setPaymentReference )
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -21,35 +25,34 @@ const CartDetail = ({ cart, onClose, onUpdateCart }) => {
   }, []);
 
   const totalAmount = cart.reduce((total, item) => {
-    const price = Number(item.price.toString().replace(/,/g, ""));
+    const price = Number(item.price.toString().replace(/,/g, "")); // Remove commas and convert to number
     const quantity = Number(item.quantity) || 1;
-    return total + price * quantity;
+    
+    console.log("Item Price:", item.price, "Processed Price:", price, "Quantity:", quantity); // Debugging
+  
+    return total + (price * quantity);
   }, 0);
-
+  
   const verifyPayment = async (reference, customerEmail, productIds) => {
-    setModalOpen(true);
-    setModalStatus("verifying"); // Show "Payment Verified, sending mail..."
-
     try {
       const response = await fetch(backendURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ reference, customerEmail, productIds }),
       });
-
+  
       const data = await response.json();
       if (response.ok) {
-        setModalStatus("sent"); // Update modal to "Mail Sent"
+        alert("Payment verified! Check your email for the PDF.");
       } else {
         alert(data.error || "Payment verification failed.");
-        setModalOpen(false);
       }
     } catch (error) {
       console.error("Error verifying payment:", error);
       alert("An error occurred while verifying payment.");
-      setModalOpen(false);
     }
   };
+  
 
   const handlePaystackPayment = () => {
     if (!email) {
@@ -58,18 +61,23 @@ const CartDetail = ({ cart, onClose, onUpdateCart }) => {
     }
 
     const handler = window.PaystackPop.setup({
-      key: "pk_live_bfcec00387948c33e9b9a146735988ba0d67315f",
+      key: "pk_live_bfcec00387948c33e9b9a146735988ba0d67315f", // Replace with actual key
       email,
       amount: totalAmount * 100, // Convert to kobo
       currency: "NGN",
       callback: function (response) {
-        // Close cart modal & empty cart
-        setIsOpen(false);
-        onUpdateCart([]); // Empty cart after payment
-
-        // Verify payment
+        console.log("Payment Successful:", response);
+      
+        // Update states here
+        setReference(response.reference);
+        setCustomerEmail(email);
+        setProductIds(cart.map((item) => item.id));
+      
+        // Call verifyPayment using state variables
         verifyPayment(response.reference, email, cart.map((item) => item.id));
       },
+      
+      
       onClose: function () {
         alert("Transaction was not completed, window closed.");
       },
@@ -78,19 +86,27 @@ const CartDetail = ({ cart, onClose, onUpdateCart }) => {
     handler.openIframe();
   };
 
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+  
   if (!isOpen) return null; // Don't render if modal is closed
+  
+ 
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white w-full md:w-2/3 lg:w-1/2 p-6 rounded-lg shadow-lg max-h-[80vh] overflow-y-auto">
-        <button onClick={onClose} className="text-red-500 font-bold text-xl">
+        <button onClick={handleClose} className="text-red-500 font-bold text-xl">
           &times;
         </button>
         <h2 className="text-2xl font-bold mb-4 text-center">Your Cart</h2>
-
+  
         {cart.length === 0 ? (
           <p className="text-gray-600">Your cart is empty!</p>
         ) : (
+          // ✅ Wrap this in a scrollable div
           <div className="max-h-[50vh] overflow-y-auto">
             <table className="w-full text-left">
               <thead>
@@ -109,7 +125,9 @@ const CartDetail = ({ cart, onClose, onUpdateCart }) => {
                         alt={item.name}
                         className="w-16 h-16 object-cover rounded-md"
                       />
-                      <span className="font-medium text-gray-700">{item.name}</span>
+                      <span className="font-medium text-gray-700">
+                        {item.name}
+                      </span>
                     </td>
                     <td className="py-4 text-gray-700">₦{item.price}</td>
                     <td className="py-4">
@@ -121,12 +139,12 @@ const CartDetail = ({ cart, onClose, onUpdateCart }) => {
             </table>
           </div>
         )}
-
+  
         <div className="mt-4 flex justify-between items-center">
           <span className="font-medium text-gray-700">Subtotal:</span>
           <span className="font-bold text-lg">₦{totalAmount}</span>
         </div>
-
+  
         {/* Email Input & Payment Button */}
         <div className="mt-6">
           <input
@@ -144,11 +162,9 @@ const CartDetail = ({ cart, onClose, onUpdateCart }) => {
           </button>
         </div>
       </div>
-
-      {/* Payment Status Modal */}
-      <PaymentStatusModal isOpen={modalOpen} status={modalStatus} onClose={() => setModalOpen(false)} />
     </div>
   );
+  
 };
 
 export default CartDetail;
