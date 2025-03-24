@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 
 const ProductPage = ({ products, onAddToCart }) => {
@@ -34,9 +34,18 @@ const ProductPage = ({ products, onAddToCart }) => {
   .map((key) => product[key]); // Get their values
   return (
     <div >
-      <div className="flex mt-10 flex-col md:flex-row p-16 bg-gray-50">
+      <div className="flex mt-10 flex-col md:flex-row p-10 bg-gray-50">
+         <div className="">
+                <Link to="/" className="text-black hover:underline">
+                  &larr; Back to Home
+                </Link>
+              </div>
             {/* Left Section (Image Carousel) */}
       <div className="w-full md:w-1/2 mb-6 md:mb-0">
+      <h1 className="text-2xl font-nunito font-bold text-gray-800 mb-1">{product.name}</h1>
+      <p className="text-md font-bold  text-gray-500 mb-4">₦{product.price}</p>
+
+
         <div className="flex justify-center items-center mb-4">
           <img
             src={currentImage}
@@ -60,9 +69,7 @@ const ProductPage = ({ products, onAddToCart }) => {
       </div>
 
       {/* Right Section (Product Details) */}
-      <div className="w-full mt-16 md:w-1/2 md:pl-8">
-        <h1 className="text-2xl font-nunito font-bold text-gray-800 mb-1">{product.name}</h1>
-        <p className="text-md font-bold  text-gray-500 mb-4">₦{product.price}</p>
+      <div className="w-full mt-5 md:w-1/2 md:pl-8">
         <p className="font-nunito font-medium text-gray-400 mb-6">{product.description}</p>
         <p className="font-nunito text-sm text-gray-400 mb-2"> <b>No Refunds:</b>  Due to the nature of digital products & the ability to instantly access and download them, we do not offer refunds once the purchase is made. All sales are final.</p>
           <p className="font-nunito text-sm text-gray-400 mb-2">Our list is designed to meet diverse needs, providing you with the best options at your fingertips, whether for professional or personal endeavors. </p>

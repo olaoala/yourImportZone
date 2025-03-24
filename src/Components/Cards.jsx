@@ -1,19 +1,8 @@
 import React, { useState } from "react";
-import { FaHeart } from "react-icons/fa";
-// import { useNavigate } from "react-router-dom";
 
-const Card = ({ id, name, price, amount, image1, image2,description, onImageClick, onAddToCart }) => {
+const Card = ({ id, name, price, amount, image1,discount,  image2,description, onImageClick, onAddToCart }) => {
 
   const [isHovered, setIsHovered] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  // const navigate = useNavigate();
-  const discountedPrice = (amount * 0.5).toLocaleString("en-NG", {
-  });
-
-  const handleWishlistClick = () => {
-    setIsLiked(!isLiked);
-    console.log(`${name} ${!isLiked ? "added to wishlist ❤️" : "removed from wishlist 💔"}`);
-  };
 
   return (
     <div
@@ -21,23 +10,17 @@ const Card = ({ id, name, price, amount, image1, image2,description, onImageClic
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Wishlist Button */}
-      <button
-        onClick={handleWishlistClick}
-        className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition"
-      >
-        <FaHeart className={`text-xl ${isLiked ? "text-red-500" : "text-gray-400"}`} />
-      </button>
-
+      
       {/* Image (Click to Go to Product Page) */}
-      <div className="h-72 w-full cursor-pointer" onClick={onImageClick}>
+      <div onClick={onImageClick}>
+      <div className="h-72 w-full cursor-pointer" >
         <img src={isHovered ? image2 : image1} alt={name} className="object-cover w-full h-full" />
       </div>
 
       {/* Product Details */}
       <div className="text-left mt-3 px-2">
         <h3 className="font-bold text-gray-800 text-lg">{name}</h3>
-        <span className="text-red-500 font-bold text-lg">₦{discountedPrice}</span>
+        <span className="text-red-500 font-bold text-lg">₦{discount}</span>
 
         <p className="text-gray-400  line-through text-md font-bold">₦{price}</p>
 
@@ -47,16 +30,20 @@ const Card = ({ id, name, price, amount, image1, image2,description, onImageClic
 
 
         {/* Add to Cart Button */}
-        <button
+      
+      </div>
+
+      </div>
+     
+      <button
         onClick={() => {
           console.log("🛒 Adding to cart:", name);
-          onAddToCart({ name, price, image1 });
+          onAddToCart({ name, discount, image1 });
         }}
-        className="my-4 px-10 py-2 bg-black text-white rounded-md"
+        className="my-4 px-10 m-2 py-2 bg-black text-white rounded-md"
       >
         Add to Cart
       </button>
-      </div>
     </div>
   );
 };

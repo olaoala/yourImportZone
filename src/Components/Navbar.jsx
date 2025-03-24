@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import {Link,  useNavigate } from "react-router-dom";
 import CartDetail from "./CartDetails"; // ✅ Import CartDetail
 
-const Navbar = ({ cart, cartCount }) => {
+const Navbar = ({ cart, cartCount, onRemoveFromCart }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); // ✅ Manage Cart Open state
+  const navigate = useNavigate();
+
+  // console.log("Navbar Props:", { onRemoveFromCart });
+  const handleCartClick =() => {
+    setIsCartOpen(true)
+    console.log(isCartOpen)
+  }
+  const handleCartclose =() => {
+    setIsCartOpen(false)
+    console.log(isCartOpen)
+  }
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -32,28 +43,32 @@ const Navbar = ({ cart, cartCount }) => {
               Vendors
             </button>
             {dropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md w-48">
-                <Link to="/vendors/All Vendors">
-                  <button className="block px-4 py-2 hover:bg-gray-100 text-left w-full">
-                    All Vendors
-                  </button>
-                </Link>
-                <Link to="/vendors/Scents">
-                  <button className="block px-4 py-2 hover:bg-gray-100 text-left w-full">
-                    Perfume Vendors
-                  </button>
-                </Link>
-                <Link to="/vendors/Clothes">
-                  <button className="block px-4 py-2 hover:bg-gray-100 text-left w-full">
-                    Clothes Vendors
-                  </button>
-                </Link>
-                <Link to="/vendors/Hair">
-                  <button className="block px-4 py-2 hover:bg-gray-100 text-left w-full">
-                    Hair Vendors
-                  </button>
-                </Link>
-              </div>
+             <div className="absolute top-full left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md w-48">
+             <button
+               className="block px-4 py-2 hover:bg-gray-100 text-left w-full"
+               onClick={() => navigate("/vendors/All Vendors")}
+             >
+               All Vendors
+             </button>
+             <button
+               className="block px-4 py-2 hover:bg-gray-100 text-left w-full"
+               onClick={() => navigate("/vendors/Scents")}
+             >
+               Perfume Vendors
+             </button>
+             <button
+               className="block px-4 py-2 hover:bg-gray-100 text-left w-full"
+               onClick={() => navigate("/vendors/Clothes")}
+             >
+               Clothes Vendors
+             </button>
+             <button
+               className="block px-4 py-2 hover:bg-gray-100 text-left w-full"
+               onClick={() => navigate("/vendors/Hair")}
+             >
+               Hair Vendors
+             </button>
+           </div>
             )}
           </div>
 
@@ -65,8 +80,8 @@ const Navbar = ({ cart, cartCount }) => {
           </Link>
 
           {/* Cart */}
-          <div className="relative flex items-center">
-            <button onClick={() => { console.log("Cart icon clicked"); setIsCartOpen(true); }}>
+          <div onClick={handleCartClick} className="relative flex items-center">
+            <button >
               <span className="text-sm">🛒</span>
             </button>
             {cartCount > 0 && (
@@ -79,7 +94,7 @@ const Navbar = ({ cart, cartCount }) => {
       </header>
 
       {/* ✅ Show Cart Modal when isCartOpen is true */}
-      {isCartOpen && <CartDetail cart={cart} onClose={() => setIsCartOpen(false)} />}
+      {isCartOpen && <CartDetail cart={cart} onRemoveFromCart={onRemoveFromCart}  onClose={handleCartclose}/>}
     </>
   );
 };

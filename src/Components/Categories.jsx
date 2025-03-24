@@ -36,7 +36,7 @@ const Categories = ({ products, onAddToCart }) => {
       </div>
 
       {/* Category Circles */}
-      <div className="grid grid-cols-3 gap-20 justify-center items-center mx-auto w-fit">
+      <div className="grid grid-cols-3 gap-5 justify-center items-center mx-auto w-fit">
         {categories.map((category, index) => (
           <button
             key={index}
@@ -61,14 +61,14 @@ const Categories = ({ products, onAddToCart }) => {
       {/* Product List for Selected Category */}
       {selectedCategory && (
         <div className="mt-8">
-          <h2 className="text-lg font-bold mb-4">{selectedCategory} Products</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <h2 className="text-lg font-bold mb-4">{selectedCategory} Vendors</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {(showAll ? filteredProducts : filteredProducts.slice(0, 5)).map((product) => (
               <Card
                 key={product.id}
                 name={product.name}
                 price={product.price}
-                amount= {product.amount}
+                discount= {product.discount}
                 image1={product.image1}
                 image2={product.image2}
                 description={product.description}

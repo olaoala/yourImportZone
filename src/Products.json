@@ -1,10 +1,10 @@
 [
     {
       "id": 1,
-      "name": "Human Hair and Premium Hair Blend",
+      "name": "Human Hair and Premium Hair Blend PDF",
       "category": "Hair",
       "price": "100",
-      "amount" :"100",
+      "discount" :"50",
       "bestSeller":"yes",
       "image1": "/HB1.jpg",
       "image2": "/HB2.jpg",
@@ -16,10 +16,10 @@
     },
     {
       "id": 2,
-      "name": "Copy Designers",
+      "name": "Copy Designers PDF",
       "category": "Clothes",
       "price": "200,000",
-      "amount" :"200000",
+      "discount" :"100,000",
       "image1": "/CD1.jpg",
       "image2": "/CD2.jpg",
       "image3": "/CD3.jpg",
@@ -32,10 +32,10 @@
     },
     {
       "id": 3,
-      "name": "Lounge and Night Wears",
+      "name": "Lounge and Night Wears PDF",
       "category": "Clothes",
       "price": "50,000",
-      "amount" :"50000",
+      "discount" :"25,000",
       "bestSeller":"yes",
       "image1": "/LW1.jpg",
       "image2": "/LW2.jpg",
@@ -49,11 +49,10 @@
     },
     {
       "id": 4,
-      "name": "Highstreet Brands",
+      "name": "Highstreet Brands PDF",
       "category": "Clothes",
       "price": "30,000",
-      "amount" :"30000",
-
+      "discount" :"15,000",
       "image1": "/HS1.jpg",
       "image2": "/HS2.jpg",
       "image3": "/HS3.jpg",
@@ -64,11 +63,10 @@
     },
     {
       "id": 5,
-      "name": "Perfumes",
+      "name": "Perfumes PDF",
       "category": "Scents",
       "price": "50,000",
-      "amount" :"50000",
-
+      "discount" :"25,000",
       "image1": "/P1.jpg",
       "image2": "/P2.jpg",
       "image3": "/P3.jpg",
@@ -82,11 +80,10 @@
     },
     {
       "id": 6,
-      "name": "Luxury Hair",
+      "name": "Luxury Hair PDF",
       "category": "Hair",
       "price": "500,000",
-      "amount" :"500000",
-
+      "discount" :"250,000",
       "image1": "/LH1.jpg",
       "image2": "/LH2.jpg",
       "image3": "/LH3.jpg",

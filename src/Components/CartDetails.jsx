@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-const CartDetail = ({cart, onUpdateCart, onClose }) => {
+const CartDetail = ({cart, onClose, onRemoveFromCart }) => {
   const [email, setEmail] = useState("");
   const [paymentReference, setPaymentReference] = useState("");
   const [reference, setReference] = useState("");
 const [customerEmail, setCustomerEmail] = useState("");
 const [productIds, setProductIds] = useState([]);
-const [isOpen, setIsOpen] = useState(true); // Track modal state
 
 const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verifyPayment"; // Netlify will proxy this to the function
 
 
-  console.log(cart, reference, paymentReference, customerEmail, productIds, setPaymentReference )
+  console.log(cart,paymentReference,reference,customerEmail,productIds,setPaymentReference, onRemoveFromCart )
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -24,8 +23,10 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
     };
   }, []);
 
+
+
   const totalAmount = cart.reduce((total, item) => {
-    const price = Number(item.price.toString().replace(/,/g, "")); // Remove commas and convert to number
+    const price = Number(item.discount.toString().replace(/,/g, ""));
     const quantity = Number(item.quantity) || 1;
     
     console.log("Item Price:", item.price, "Processed Price:", price, "Quantity:", quantity); // Debugging
@@ -87,18 +88,15 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
   };
 
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+;
   
-  if (!isOpen) return null; // Don't render if modal is closed
   
  
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white w-full md:w-2/3 lg:w-1/2 p-6 rounded-lg shadow-lg max-h-[80vh] overflow-y-auto">
-        <button onClick={handleClose} className="text-red-500 font-bold text-xl">
+        <button onClick={onClose} className="text-red-500 font-bold text-xl">
           &times;
         </button>
         <h2 className="text-2xl font-bold mb-4 text-center">Your Cart</h2>
@@ -113,7 +111,6 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
                 <tr className="border-b">
                   <th className="py-2 text-gray-800 font-medium">Product</th>
                   <th className="py-2 text-gray-800 font-medium">Price</th>
-                  <th className="py-2 text-gray-800 font-medium">Quantity</th>
                 </tr>
               </thead>
               <tbody>
@@ -129,10 +126,7 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
                         {item.name}
                       </span>
                     </td>
-                    <td className="py-4 text-gray-700">₦{item.price}</td>
-                    <td className="py-4">
-                      <span className="font-medium">{item.quantity}</span>
-                    </td>
+                    <td className="py-4 text-gray-700">₦{item.discount}</td>
                   </tr>
                 ))}
               </tbody>
@@ -156,7 +150,7 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
           />
           <button
             onClick={handlePaystackPayment}
-            className="bg-blue-500 text-white py-2 rounded w-full hover:bg-blue-600"
+            className="bg-black text-white py-2 rounded w-full "
           >
             Pay to Get PDF
           </button>

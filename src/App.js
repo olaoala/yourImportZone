@@ -5,32 +5,42 @@ import ProductPage from "./Pages/Product";
 import VendorPage from "./Pages/Vendors";
 import Navbar from "./Components/Navbar";
 import products from './Products.json';
-// import CartDetails from "./Components/CartDetails";
+
+
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Modal state
 
 
 
 
-  // const handleCloseCart = () => {
-  //   setIsCartOpen(false);
+  // const handleRemoveFromCart = (id) => {
+  //   console.log("Removing item from cart:", id); // Debugging
+  //   setCart(cart.filter(item => item.id !== id));
   // };
-  // ✅ Global Add to Cart Function
-
+  const handleRemoveFromCart = (itemId) => {
+    console.log("📌 handleRemoveFromCart in App.js:", itemId); // ✅ Debug log
+    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+  };
+  
   const handleAddToCart = (product) => {
     setCart((prevCart) => {
       const isItemInCart = prevCart.find((item) => item.id === product.id);
-      return isItemInCart
-        ? prevCart.map((item) =>
-            item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-          )
-        : [...prevCart, { ...product, quantity: 1 }];
+
+      if (isItemInCart) {
+        setShowModal(true); // Show modal when item is already in cart
+        return prevCart; // Don't add again
+      }
+
+      return [...prevCart, { ...product, quantity: 1 }];
     });
   };
-  console.log(cart, cart.length)
+  console.log(cart, cart.length,setIsCartOpen)
+
+
 
   useEffect(() => {
     console.log("Updated Cart:", cart, "Length:", cart.length);
@@ -40,19 +50,39 @@ const App = () => {
   console.log(cart, cart.length)
 
   useEffect(() => {
-    console.log("isCartOpen State:", isCartOpen); // Log the cart modal state
-  }, [isCartOpen]);
+    console.log("isCartOpen State:", isCartOpen);
+ // Log the cart modal state
+  }, [isCartOpen,]);
   return (
     <Router>
-      <Navbar cartCount={cartCount} cart={cart}   onCartClick={() => setIsCartOpen(true)}  /> ✅ Pass Cart Count to Navbar
+      <Navbar cartCount={cartCount} cart={cart} onRemoveFromCart={handleRemoveFromCart}  />
       <Routes>
         <Route path="/" element={<Home cart={cart} products={products} cartCount={cartCount} onAddToCart={handleAddToCart} />} />
         <Route path="/product/:id" element={<ProductPage products={products} onAddToCart={handleAddToCart} />} />
-        <Route path="/vendors/:category" element={<VendorPage products={products} />} />
+        <Route path="/vendors/:category" element={<VendorPage key={window.location.pathname} products={products}  onAddToCart={handleAddToCart} />} />
+        
+
       </Routes>
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-10 rounded-lg shadow-md text-center">
+            <p className="text-lg font-semibold mb-4">Already in Cart</p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="bg-black text-white px-4 py-2 rounded"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
 
     </Router>
+
+    
   );
+  
 };
+
 
 export default App;
