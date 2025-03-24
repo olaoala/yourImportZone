@@ -1,31 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import VendorCard from "../Components/Cards"; // Import the VendorCard component
 
 const VendorPage = ({ products, cartCount, onCartClick, onAddToCart }) => {
   const { category: routeCategory } = useParams();
-  const [category] = useState(routeCategory);
-    const navigate = useNavigate();
-  console.log( category, routeCategory)
+  const [category, setCategory] = useState(routeCategory);
+  const navigate = useNavigate();
 
-  
+  console.log("Route Category:", routeCategory);
+  console.log("State Category:", category);
 
-  // Filter products based on the selected category
+  // ✅ Update state whenever routeCategory changes
+  useEffect(() => {
+    setCategory(routeCategory);
+  }, [routeCategory]);
+
+  // ✅ Fix the filter logic
   const filteredProducts = products.filter(
-    (product) => category === routeCategory || product.category === routeCategory
+    (product) => routeCategory === "All Vendors" || product.category === routeCategory
   );
-  
+
   const handleProductClick = (productId) => {
     navigate(`/product/${productId}`);
   };
-  console.log(filteredProducts, category, routeCategory)
+
+  console.log("Filtered Products:", filteredProducts);
 
   return (
     <div className="min-h-screen bg-gray-50">
-
       {/* Header */}
       <header className="bg-white font-poppins py-4 px-6 mt-20">
-        <h1 className="text-2xl font-bold text-center">{routeCategory} List</h1>
+        <h1 className="text-2xl font-bold text-center">{category} List</h1>
       </header>
 
       {/* Back to Home */}
@@ -47,7 +52,7 @@ const VendorPage = ({ products, cartCount, onCartClick, onAddToCart }) => {
                 discount={product.discount}
                 image1={product.image1}
                 image2={product.image2}
-                description={product.description} // Add this!
+                description={product.description}
                 onImageClick={() => handleProductClick(product.id)}
                 onAddToCart={() => onAddToCart(product)}
               />
@@ -57,8 +62,6 @@ const VendorPage = ({ products, cartCount, onCartClick, onAddToCart }) => {
           <p className="text-center text-gray-600">No vendors found for this category.</p>
         )}
       </div>
-
-    
     </div>
   );
 };
