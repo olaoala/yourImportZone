@@ -3,6 +3,11 @@
   functions = "netlify/functions"
   publish = "build"
 
+  [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [dev]
   command = "npm start" # or "yarn start" if using yarn
   targetPort = 3000  # Your frontend is running here

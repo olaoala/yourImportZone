@@ -7,6 +7,9 @@ const Navbar = ({ cart, cartCount, onRemoveFromCart }) => {
   const [isCartOpen, setIsCartOpen] = useState(false); // ✅ Manage Cart Open state
   const navigate = useNavigate();
 
+
+  
+
   // console.log("Navbar Props:", { onRemoveFromCart });
   const handleCartClick =() => {
     setIsCartOpen(true)

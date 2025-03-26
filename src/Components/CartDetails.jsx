@@ -109,6 +109,7 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b">
+                <th className="p-4 text-gray-800 font-medium"></th>
                   <th className="py-2 text-gray-800 font-medium">Product</th>
                   <th className="py-2 text-gray-800 font-medium">Price</th>
                 </tr>
@@ -116,6 +117,14 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
               <tbody>
                 {cart.map((item) => (
                   <tr key={item.id} className="border-b">
+                    <td className="py-4">
+                    <button 
+                      onClick={() => onRemoveFromCart(item.id)}
+                      className="text-red-500 hover:text-red-700 font-bold"
+                    >
+                      🗑️
+                    </button>
+                  </td>
                     <td className="py-4 flex items-center gap-4">
                       <img
                         src={item.image1}
@@ -127,6 +136,7 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
                       </span>
                     </td>
                     <td className="py-4 text-gray-700">₦{item.discount}</td>
+                    
                   </tr>
                 ))}
               </tbody>
@@ -136,7 +146,7 @@ const backendURL = "https://yourimportzone.netlify.app/.netlify/functions/verify
   
         <div className="mt-4 flex justify-between items-center">
           <span className="font-medium text-gray-700">Subtotal:</span>
-          <span className="font-bold text-lg">₦{totalAmount}</span>
+          <span className="font-bold text-lg">₦{totalAmount.toLocaleString()}</span>
         </div>
   
         {/* Email Input & Payment Button */}
