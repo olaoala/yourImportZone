@@ -35,8 +35,11 @@ const CartDetail = ({ cart, onClose, onRemoveFromCart, onClearCart }) => {
       const data = await response.json();
 
       if (response.ok) {
+        setPaymentProcessing(false);
         setMailSent(true); // Show "Mail Sent" modal
-        onClearCart(); // Clear cart after payment
+        
+        // Clear the cart immediately after payment is successful
+        onClearCart(); 
       } else {
         alert(data.error || "Payment verification failed.");
         setPaymentProcessing(false);

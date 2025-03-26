@@ -7,7 +7,11 @@ const Navbar = ({ cart, cartCount, onRemoveFromCart }) => {
   const [isCartOpen, setIsCartOpen] = useState(false); // ✅ Manage Cart Open state
   const navigate = useNavigate();
 
-
+  const handleClearCart = () => {
+    setCart([]); // Clear the cart
+    setIsCartOpen(false); // Close the Cart modal
+  };
+  
   
 
   // console.log("Navbar Props:", { onRemoveFromCart });
@@ -97,7 +101,7 @@ const Navbar = ({ cart, cartCount, onRemoveFromCart }) => {
       </header>
 
       {/* ✅ Show Cart Modal when isCartOpen is true */}
-      {isCartOpen && <CartDetail cart={cart} onRemoveFromCart={onRemoveFromCart}  onClose={handleCartclose}/>}
+      {isCartOpen && <CartDetail cart={cart} onRemoveFromCart={onRemoveFromCart} onClearCart={handleClearCart}   onClose={handleCartclose}/>}
     </>
   );
 };
