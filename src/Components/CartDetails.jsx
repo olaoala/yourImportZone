@@ -57,7 +57,7 @@ const CartDetail = ({ cart, onClose, onRemoveFromCart, onClearCart }) => {
     setPaymentProcessing(true); // Show "Processing Payment" modal
 
     const handler = window.PaystackPop.setup({
-      key: "pk_live_bfcec00387948c33e9b9a146735988ba0d67315f", // Replace with actual key
+      key: "pk_live_ce3ecc42f7d6a034f0ff7d006b58665a0d0fc48f", // Replace with actual key
       email,
       amount: totalAmount * 100,
       currency: "NGN",
