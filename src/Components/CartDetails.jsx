@@ -31,15 +31,12 @@ const CartDetail = ({ cart, onClose, onRemoveFromCart, onClearCart }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ reference, customerEmail: email, productIds: cart.map((item) => item.id) }),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
-        setPaymentProcessing(false);
         setMailSent(true); // Show "Mail Sent" modal
-        
-        // Clear the cart immediately after payment is successful
-        onClearCart(); 
+        onClearCart(); // ✅ Clear cart after payment
       } else {
         alert(data.error || "Payment verification failed.");
         setPaymentProcessing(false);
@@ -50,6 +47,7 @@ const CartDetail = ({ cart, onClose, onRemoveFromCart, onClearCart }) => {
       setPaymentProcessing(false);
     }
   };
+  
 
   const handlePaystackPayment = () => {
     if (!email) {

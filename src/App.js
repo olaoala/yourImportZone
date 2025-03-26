@@ -17,10 +17,11 @@ const App = () => {
 
 
 
-  // const handleRemoveFromCart = (id) => {
-  //   console.log("Removing item from cart:", id); // Debugging
-  //   setCart(cart.filter(item => item.id !== id));
-  // };
+  const handleClearCart = () => {
+    setCart([]); // Clear the cart
+    setIsCartOpen(false); // Close the Cart modal
+  };
+
   const handleRemoveFromCart = (itemId) => {
     console.log("📌 handleRemoveFromCart in App.js:", itemId); // ✅ Debug log
     setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
@@ -55,7 +56,7 @@ const App = () => {
   }, [isCartOpen,]);
   return (
     <Router>
-      <Navbar cartCount={cartCount} cart={cart} onRemoveFromCart={handleRemoveFromCart}  />
+      <Navbar cartCount={cartCount} cart={cart} onClearCart={handleClearCart} onRemoveFromCart={handleRemoveFromCart}  />
       <Routes>
         <Route path="/" element={<Home cart={cart} products={products} cartCount={cartCount} onAddToCart={handleAddToCart} />} />
         <Route path="/product/:id" element={<ProductPage products={products} onAddToCart={handleAddToCart} />} />

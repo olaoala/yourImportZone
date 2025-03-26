@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 import {Link,  useNavigate } from "react-router-dom";
 import CartDetail from "./CartDetails"; // ✅ Import CartDetail
 
-const Navbar = ({ cart, cartCount, onRemoveFromCart }) => {
+const Navbar = ({ cart, cartCount, onRemoveFromCart, onClearCart }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); // ✅ Manage Cart Open state
   const navigate = useNavigate();
 
-  const handleClearCart = () => {
-    setCart([]); // Clear the cart
-    setIsCartOpen(false); // Close the Cart modal
-  };
+
   
   
 
@@ -18,6 +15,7 @@ const Navbar = ({ cart, cartCount, onRemoveFromCart }) => {
   const handleCartClick =() => {
     setIsCartOpen(true)
     console.log(isCartOpen)
+    console.log(setCart)
   }
   const handleCartclose =() => {
     setIsCartOpen(false)
@@ -101,7 +99,7 @@ const Navbar = ({ cart, cartCount, onRemoveFromCart }) => {
       </header>
 
       {/* ✅ Show Cart Modal when isCartOpen is true */}
-      {isCartOpen && <CartDetail cart={cart} onRemoveFromCart={onRemoveFromCart} onClearCart={handleClearCart}   onClose={handleCartclose}/>}
+      {isCartOpen && <CartDetail cart={cart} onRemoveFromCart={onRemoveFromCart} onClearCart={onClearCart}   onClose={handleCartclose}/>}
     </>
   );
 };
