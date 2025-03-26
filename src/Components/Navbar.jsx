@@ -15,7 +15,6 @@ const Navbar = ({ cart, cartCount, onRemoveFromCart, onClearCart }) => {
   const handleCartClick =() => {
     setIsCartOpen(true)
     console.log(isCartOpen)
-    console.log(setCart)
   }
   const handleCartclose =() => {
     setIsCartOpen(false)
