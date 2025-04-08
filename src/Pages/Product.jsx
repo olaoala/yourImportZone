@@ -43,8 +43,8 @@ const ProductPage = ({ products, onAddToCart }) => {
             {/* Left Section (Image Carousel) */}
       <div className="w-full md:w-1/2 mb-6 md:mb-0">
       <h1 className="text-2xl font-nunito font-bold text-gray-800 mb-1">{product.name}</h1>
-      <p className="text-md font-bold  text-gray-500 mb-1">₦{product.discount}</p>
-      <p className="text-md font-bold  line-through text-gray-300 mb-1">₦{product.price}</p>
+      {/* <p className="text-md font-bold  text-gray-500 mb-1">₦{product.discount}</p> */}
+      <p className="text-md font-bold  text-gray-300 mb-1">₦{product.price}</p>
 
 
         <div className="flex justify-center items-center mb-4">
