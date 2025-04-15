@@ -99,11 +99,11 @@
     "price": "50,000",
     "discount": "50,000",
     "bestSeller": "yes",
-    "image1": "/HS1.jpg",
-    "image2": "/HS2.jpg",
-    "image3": "/HS3.jpg",
-    "image4": "/HS4.jpg",
-    "Catimg": "/LW1.jpg",
+    "image1": "/MW1.jpg",
+    "image2": "/MW2.jpg",
+    "image3": "/MW3.jpg",
+    "image4": "/MW4.jpg",
+    "Catimg": "/MW5.jpg",
     "pdfUrl": "https://yourimportzone.netlify.app/pdfs/7.pdf",
     "description": "This contains 2 suppliers that sells high quality branded and boxed tees and shirt. One Chinese supplier and one Turkey supplier."
   }
