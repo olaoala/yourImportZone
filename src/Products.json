@@ -106,5 +106,20 @@
     "Catimg": "/MW5.jpg",
     "pdfUrl": "https://yourimportzone.netlify.app/pdfs/7.pdf",
     "description": "This contains 2 suppliers that sells high quality branded and boxed tees and shirt. One Chinese supplier and one Turkey supplier."
+  },
+  {
+    "id": 8,
+    "name": "Nigerian Wholesalers PDF",
+    "category": "Clothes",
+    "price": "30,000",
+    "discount": "150",
+    "bestSeller": "yes",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "Catimg": "",
+    "pdfUrl": "https://yourimportzone.netlify.app/pdfs/8.pdf",
+    "description": "150 Nigerian wholesalers for items ranging from lingeries, to kids items to skincare to perfumes and any items you can think of."
   }
 ]
